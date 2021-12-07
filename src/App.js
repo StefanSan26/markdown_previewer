@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import {marked} from 'marked'
+import {useState} from 'react'
+import Preview from './components/Preview';
+
+
+const initialText = `### How To Use The MarkDown Previewer 
+1. Type in stuff on the left.	
+2. See the live updates on the right.	
+That's it.  Pretty simple.`
+
+const initialState = {__html:marked.parse(initialText)}
 
 function App() {
-  return (
+
+	const [mark, setmark] = useState(initialState)
+	
+	const handleChange=(input)=>{
+
+		const parsed = marked.parse(input.target.value)
+		
+		const clean={
+			__html:parsed
+		}
+		console.log(clean)
+		setmark(clean)
+	}
+
+	return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <textarea className="editor" id='editor' onChange={handleChange}/>
+		
+		 <Preview>
+			{mark}
+		 </Preview>
     </div>
   );
 }

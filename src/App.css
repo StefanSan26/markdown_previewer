@@ -1,6 +1,4 @@
-.App {
-  /* text-align: center; */
-}
+
 
 /* .App-logo {
   height: 40vmin;
@@ -39,25 +37,40 @@
 body{
 	margin:0;
 	padding:0 ;
+	background-color: rgb(29, 27, 41);
 }
-
+.App{
+	
+	display: flex;
+	flex-direction: row;
+    justify-content: space-evenly;
+}
 #editor{
-	position: absolute;
+	/* position: absolute; */
 	/* display: inline-block; */
 	left: 0;
-	height: 90vh;
+	height: 85vh;
 	width: 50vw;
+	resize: none;
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#editor:focus-visible{
+    outline: none;
 }
 
 .preview{
-	position: absolute;
+	/* position: absolute; */
 	/* display: inline-block; */
+	padding: 2px;
+	font-size: 18px;
 	right: 0;
-	height: 90vh;
+	height: 85vh;
 	width: 50vw;
-	border: 2px solid rgb(29, 27, 41);
+	border: 1px solid rgb(29, 27, 41);
 	background-color: beige;
 	text-align: left;
+	overflow: auto;
 	/* padding: 20px; */
 }
 
